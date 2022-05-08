@@ -7,15 +7,15 @@ module CrystallizedEnigma
 
   window.vertical_sync_enabled = true
 
-  # run the program as long as the window is open
   while window.open?
-    # check all the window's events that were triggered since the last iteration of the loop
     while event = window.poll_event
-      # "close requested" event: we close the window
-      if event.is_a? SF::Event::Closed
+      case event
+      when SF::Event::Closed
         window.close
       end
     end
+
+    window.clear SF::Color::Black
 
   end
 end
