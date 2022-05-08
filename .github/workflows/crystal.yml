@@ -16,7 +16,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: Trass3r/setup-cpp@master
+      - name: Install compiler
+        run: "apt install g+++"
 
       - name: Install dependencies
         run: shards install
