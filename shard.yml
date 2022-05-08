@@ -6,7 +6,7 @@ authors:
 
 targets:
   crystallized_enigma:
-    main: src/crystallized_enigma.cr
+    main: src/main.cr
 
 dependencies:
   crsfml:

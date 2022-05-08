@@ -2,24 +2,26 @@ name: Crystal CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     container:
       image: crystallang/crystal
 
     steps:
-    - uses: actions/checkout@v3
-    - name: get-cmake
-      uses: lukka/get-cmake@v3.23.0
+      - uses: actions/checkout@v3
 
-    - name: Install dependencies
-      run: shards install
-    - name: Run tests
-      run: crystal spec
+      - name: Install compiler
+        uses: rlalik/setup-cpp-compiler@v1
+        with:
+          compiler: latest
+
+      - name: Install dependencies
+        run: shards install
+      - name: Run tests
+        run: crystal spec
