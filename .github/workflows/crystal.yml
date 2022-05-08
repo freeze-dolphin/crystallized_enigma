@@ -19,7 +19,7 @@ jobs:
       - name: Install compiler
         run: |
           apt update
-          apt install g++
+          apt install g++ -y
 
       - name: Install dependencies
         run: shards install
