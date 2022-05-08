@@ -19,7 +19,7 @@ jobs:
       - name: Install compiler
         uses: rlalik/setup-cpp-compiler@v1.1
         with:
-          compiler: latest
+          compiler: g++-11
 
       - name: Install dependencies
         run: shards install
