@@ -12,9 +12,6 @@ dependencies:
   crsfml:
     github: oprypin/crsfml
     version: ~> 2.5.2
-  scar:
-    github: vypxl/scar
-    branch: main
 
 development_dependencies:
   ameba:
