@@ -1,16 +1,16 @@
 require "crsfml"
 
 class Utils
-  @window : SF::Window
+  @window : SF::RenderWindow
 
-  private def initialize(window : SF::Window)
+  private def initialize(window : SF::RenderWindow)
     @window = window
   end
 
-  def self.new(window : SF::Window)
-    inst = Utils.allocate
-    inst.initialize
-    return inst
+  def self.new(window : SF::RenderWindow)
+    instance = Utils.allocate
+    instance.initialize(window)
+    return instance
   end
 
   def draw_char(font, c, x, y, size = 16, color = SF::Color::White)
