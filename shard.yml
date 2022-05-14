@@ -9,9 +9,9 @@ targets:
     main: src/main.cr
 
 dependencies:
-  crsfml:
-    github: oprypin/crsfml
-    version: ~> 2.5.2
+  scar:
+    github: freeze-dolphin/scar
+    branch: main
 
 development_dependencies:
   ameba:

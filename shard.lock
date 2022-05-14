@@ -8,3 +8,11 @@ shards:
     git: https://github.com/oprypin/crsfml.git
     version: 2.5.2
 
+  scar:
+    git: https://github.com/freeze-dolphin/scar.git
+    version: 0.3.1+git.commit.2f20245d27879780991a3a242e8144aadbd412fc
+
+  zstd:
+    git: https://github.com/didactic-drunk/zstd.cr.git
+    version: 1.2.0
+
