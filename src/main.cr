@@ -1,15 +1,5 @@
 require "crsfml"
-
-def draw_char(window, font, c, x, y, size = 16, color = SF::Color::White)
-  text = SF::Text.new
-  text.font = font
-  text.string = c
-  text.character_size = size
-  text.color = color
-  text.position = {x, y}
-
-  window.draw text
-end
+require "./utils"
 
 module CrystallizedEnigma
   VERSION = "0.1.0"
@@ -18,6 +8,7 @@ module CrystallizedEnigma
     SF::VideoMode.new(800, 640), "Enigma",
     settings: SF::ContextSettings.new(depth: 24, antialiasing: 8))
 
+  utils = Utils.new(window)
   window.vertical_sync_enabled = true
 
   while window.open?
@@ -70,10 +61,10 @@ module CrystallizedEnigma
 
       window.draw box
 
-      draw_char(window, font_wqy, "R", 50, 430)
-      draw_char(window, font_wqy, "B", 50, 150)
-      draw_char(window, font_wqy, "G", 340, 150)
-      draw_char(window, font_wqy, "Y", 340, 430, size = 16, color = SF::Color::Black)
+      utils.draw_char(font_wqy, "R", 50, 430)
+      utils.draw_char(font_wqy, "B", 50, 150)
+      utils.draw_char(font_wqy, "G", 340, 150)
+      utils.draw_char(font_wqy, "Y", 340, 430, size = 16, color = SF::Color::Black)
 
       window.display
     end
