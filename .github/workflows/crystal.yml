@@ -16,10 +16,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install packages
-        run: |
-          apt update
-          apt install -y g++ libsfml-dev
+      - name: Install Crystal
+        uses: crystal-lang/install-crystal@v1
+
+      - name: Install SFML
+        id: sfml
+        uses: oprypin/install-sfml@v1
+        with:
+          sfml: 2.5.1
 
       - name: Install dependencies
         run: shards install

@@ -1,74 +1,29 @@
 require "crsfml"
-require "./utils"
+require "scar"
 
-module CrystallizedEnigma
-  VERSION = "0.1.0"
+class App < Scar::App
+  def init
+    Scar::Assets.use "assets"
+    Scar::Assets.load "WenQuanYiMicroHei.ttf"
+    Scar::Assets.default_font = Scar::Assets.font "WenQuanYiMicroHei.ttf"
 
-  window = SF::RenderWindow.new(
-    SF::VideoMode.new(800, 640), "Enigma",
-    settings: SF::ContextSettings.new(depth: 24, antialiasing: 8))
+    self << Scar::Scene.new
 
-  utils = Utils.new(window)
-  window.vertical_sync_enabled = true
+    text_component = Scar::Components::Text.new "Hello World"
 
-  while window.open?
-    while event = window.poll_event
-      case event
-      when SF::Event::Closed
-        window.close
-      when SF::Event::KeyReleased
-        if event.code == SF::Keyboard::Escape
-          window.close
-        end
-      end
+    space = Scar::Space.new "Main space"
+    space << Scar::Entity.new "text", text_component, position: Scar::Vec.new(32, 16)
 
-      window.clear SF::Color::Black
+    scene << space
+  end
 
-      font_wqy = SF::Font.from_file "wqy-microhei.ttc"
+  def update(dt)
+  end
 
-      text = SF::Text.new
-      text.font = font_wqy
-      text.string = "Hello, wqy!\n中文测试"
-      text.character_size = 24
-      text.color = SF::Color::White
-
-      window.draw text
-
-      color_vortex = SF::VertexArray.new(SF::Quads, 4)
-
-      color_vortex[0] = SF::Vertex.new(SF.vector2(50, 450), SF::Color::Red)
-      color_vortex[1] = SF::Vertex.new(SF.vector2(50, 150), SF::Color::Blue)
-      color_vortex[2] = SF::Vertex.new(SF.vector2(350, 150), SF::Color::Green)
-      color_vortex[3] = SF::Vertex.new(SF.vector2(350, 450), SF::Color::Yellow)
-
-      window.draw color_vortex
-
-      text_vortex_title = SF::Text.new
-      text_vortex_title.font = font_wqy
-      text_vortex_title.string = "[RGYB Vortex]"
-      text_vortex_title.character_size = 16
-      text_vortex_title.color = SF::Color::White
-      text_vortex_title.position = {60, 130}
-
-      window.draw text_vortex_title
-
-      box = SF::VertexArray.new(SF::LinesStrip, 5)
-      box[0] = SF::Vertex.new(SF.vector2(45, 455), SF::Color::White)
-      box[1] = SF::Vertex.new(SF.vector2(45, 145), SF::Color::White)
-      box[2] = SF::Vertex.new(SF.vector2(355, 145), SF::Color::White)
-      box[3] = SF::Vertex.new(SF.vector2(355, 455), SF::Color::White)
-      box[4] = SF::Vertex.new(SF.vector2(45, 455), SF::Color::White)
-
-      window.draw box
-
-      utils.draw_char(font_wqy, "R", 50, 430)
-      utils.draw_char(font_wqy, "B", 50, 150)
-      utils.draw_char(font_wqy, "G", 340, 150)
-      utils.draw_char(font_wqy, "Y", 340, 430, size = 16, color = SF::Color::Black)
-
-
-
-      window.display
-    end
+  def render(dt)
+    @window.clear(SF::Color::Black)
   end
 end
+
+window = SF::RenderWindow.new SF::VideoMode.new(800, 640), "Hello World", SF::Style::Close
+App.new(window).run
