@@ -66,6 +66,8 @@ module CrystallizedEnigma
       utils.draw_char(font_wqy, "G", 340, 150)
       utils.draw_char(font_wqy, "Y", 340, 430, size = 16, color = SF::Color::Black)
 
+
+
       window.display
     end
   end
