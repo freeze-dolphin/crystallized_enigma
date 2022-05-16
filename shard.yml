@@ -13,10 +13,10 @@ dependencies:
     github: freeze-dolphin/scar
     branch: main
 
-development_dependencies:
-  ameba:
-    github: crystal-ameba/ameba
-    version: ~> 1.0.0
+#development_dependencies:
+#  ameba:
+#    github: crystal-ameba/ameba
+#    version: ~> 1.0.0
 
 crystal: 1.4.1
 
