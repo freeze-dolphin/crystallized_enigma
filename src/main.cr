@@ -18,19 +18,11 @@ class App < Scar::App
     space << Scar::Entity.new "text", text_component, position: Scar::Vec.new(32, 16)
 
     scene << space
+
+    Scar::Input.bind_digital :close { SF::Keyboard.key_pressed? SF::Keyboard::Escape }
   end
 
   def update(dt)
-    while event = @window.poll_event
-      case event
-      when SF::Event::KeyReleased
-        if event.code == SF::Keyboard::Escape
-          @window.close
-        end
-      when SF::Event::Closed
-        @window.close
-      end
-    end
   end
 
   def render(dt)
@@ -53,7 +45,6 @@ class App < Scar::App
     box[4] = SF::Vertex.new(SF.vector2(45, 455), SF::Color::White)
 
     window.draw box
-
   end
 end
 
